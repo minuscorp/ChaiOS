@@ -1,0 +1,23 @@
+PODS:
+  - ChaiOS (0.1.0):
+    - EarlGrey (~> 1.15.0)
+  - EarlGrey (1.15.0)
+
+DEPENDENCIES:
+  - ChaiOS (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - EarlGrey
+
+EXTERNAL SOURCES:
+  ChaiOS:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ChaiOS: 706d803bee9d292178525e8c2b9be02f4fc735ca
+  EarlGrey: 289a16cc7d08a54b962d72881b21e36d5103b549
+
+PODFILE CHECKSUM: 3ede5701e6c721faadb35e1253f6216491aa9f35
+
+COCOAPODS: 1.5.3
