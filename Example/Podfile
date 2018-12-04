@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ChaiOS_Example' do
+  pod 'ChaiOS', :path => '../'
+
+  target 'ChaiOS_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
