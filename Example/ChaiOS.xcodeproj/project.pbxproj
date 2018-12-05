@@ -13,6 +13,8 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
+		F4509B4321B8383C00892FF2 /* ChaiosScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4509B4221B8383C00892FF2 /* ChaiosScreen.swift */; };
+		F4509B4521B83B1C00892FF2 /* EarlGrey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4509B4421B83B1C00892FF2 /* EarlGrey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		D569186315646D18E9E16CEF /* Pods-ChaiOS_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChaiOS_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChaiOS_Example/Pods-ChaiOS_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		DA3DD6141AFBCD8783FDE8E8 /* Pods-ChaiOS_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChaiOS_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChaiOS_Example/Pods-ChaiOS_Example.release.xcconfig"; sourceTree = "<group>"; };
+		F4509B4221B8383C00892FF2 /* ChaiosScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaiosScreen.swift; sourceTree = "<group>"; };
+		F4509B4421B83B1C00892FF2 /* EarlGrey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarlGrey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,8 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				F4509B4221B8383C00892FF2 /* ChaiosScreen.swift */,
+				F4509B4421B83B1C00892FF2 /* EarlGrey.swift */,
 			);
 			name = "Example for ChaiOS";
 			path = ChaiOS;
@@ -206,16 +212,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ChaiOS_Example/Pods-ChaiOS_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ChaiOS/ChaiOS.framework",
 				"${PODS_ROOT}/EarlGrey/EarlGrey/EarlGrey.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChaiOS.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EarlGrey.framework",
@@ -230,15 +232,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-ChaiOS_Example-checkManifestLockResult.txt",
 			);
@@ -254,7 +252,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4509B4521B83B1C00892FF2 /* EarlGrey.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				F4509B4321B8383C00892FF2 /* ChaiosScreen.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
