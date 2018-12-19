@@ -36,4 +36,10 @@ public class Interaction {
         matcher.toGrey.selected().using(searchAction: action.toGrey, onElementWithMatcher: matcher.toGrey)
         return self
     }
+    
+    @discardableResult
+    public func perform(_ action: Action) -> Self {
+        matcher.toGrey.selected().__perform(action.toGrey)
+        return self
+    }
 }
