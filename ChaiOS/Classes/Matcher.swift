@@ -27,6 +27,10 @@ extension Matcher {
     public func selected(file: StaticString = #file, line: UInt = #line) -> Interaction {
         return Interaction.init(file: file, line: line, matcher: self)
     }
+    
+    public subscript(_ at: UInt) -> Interaction {
+        return Interaction(matcher: self, index: at)
+    }
 }
 
 extension Matcher {

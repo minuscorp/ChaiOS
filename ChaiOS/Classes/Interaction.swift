@@ -6,40 +6,77 @@ public class Interaction {
     private let file: String
     private let line: UInt
     private let matcher: Matcher
+    private let index: UInt?
     
-    init(file: StaticString = #file, line: UInt = #line, matcher: Matcher) {
+    private var selection: GREYInteraction {
+        return matcher.toGrey.selected()
+    }
+    
+    init(file: StaticString = #file, line: UInt = #line, matcher: Matcher, index: UInt? = nil) {
         self.file = file.description
         self.line = line
         self.matcher = matcher
+        self.index = index
     }
     
     @discardableResult
     public func assert(_ condition: Condition) -> Self {
-        matcher.toGrey.selected().assert(condition.toGrey)
+        var selection = self.selection
+        if let index = index {
+            selection = selection.atIndex(index)
+        }
+        selection.assert(condition.toGrey)
         return self
     }
     
     @discardableResult
     public func assert(_ otherMatcher: Matcher) -> Self {
-        matcher.toGrey.selected().assert(otherMatcher.toGrey)
+        var selection = self.selection
+        if let index = index {
+            selection = selection.atIndex(index)
+        }
+        selection.assert(otherMatcher.toGrey)
         return self
     }
 
     @discardableResult
     public func using(_ action: Action, on condition: Condition) -> Self {
-        matcher.toGrey.selected().using(searchAction: action.toGrey, onElementWithMatcher: Matcher.that(condition).toGrey)
+        var selection = self.selection
+        if let index = index {
+            selection = selection.atIndex(index)
+        }
+        selection.using(searchAction: action.toGrey, onElementWithMatcher: Matcher.that(condition).toGrey)
         return self
     }
     
     @discardableResult
     public func using(_ action: Action, on otherMatcher: Matcher) -> Self {
-        matcher.toGrey.selected().using(searchAction: action.toGrey, onElementWithMatcher: matcher.toGrey)
+        var selection = self.selection
+        if let index = index {
+            selection = selection.atIndex(index)
+        }
+        selection.using(searchAction: action.toGrey, onElementWithMatcher: matcher.toGrey)
         return self
     }
     
     @discardableResult
     public func perform(_ action: Action) -> Self {
-        matcher.toGrey.selected().__perform(action.toGrey)
+        var selection = self.selection
+        if let index = index {
+            selection = selection.atIndex(index)
+        }
+        selection.__perform(action.toGrey)
         return self
+    }
+    
+    @discardableResult
+    public func at(_ index: UInt) -> Interaction {
+        return Interaction(matcher: matcher, index: index)
+    }
+    
+    public subscript(_ index: UInt) -> Interaction {
+        get {
+            return Interaction(matcher: matcher, index: index)
+        }
     }
 }
