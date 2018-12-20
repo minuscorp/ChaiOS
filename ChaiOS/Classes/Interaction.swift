@@ -1,7 +1,9 @@
 import Foundation
 import EarlGrey
 
-public class Interaction {
+public class Interaction: GreyConvertible {
+    
+    public typealias Grey = GREYInteraction
     
     private let file: String
     private let line: UInt
@@ -19,6 +21,10 @@ public class Interaction {
         self.index = index
     }
     
+    public var toGrey: GREYInteraction {
+        return index == nil ? selection : selection.atIndex(index!)
+    }
+    
     @discardableResult
     public func assert(_ condition: Condition) -> Self {
         var selection = self.selection
@@ -31,41 +37,25 @@ public class Interaction {
     
     @discardableResult
     public func assert(_ otherMatcher: Matcher) -> Self {
-        var selection = self.selection
-        if let index = index {
-            selection = selection.atIndex(index)
-        }
-        selection.assert(otherMatcher.toGrey)
+        self.toGrey.assert(otherMatcher.toGrey)
         return self
     }
 
     @discardableResult
     public func using(_ action: Action, on condition: Condition) -> Self {
-        var selection = self.selection
-        if let index = index {
-            selection = selection.atIndex(index)
-        }
-        selection.using(searchAction: action.toGrey, onElementWithMatcher: Matcher.that(condition).toGrey)
+        self.toGrey.using(searchAction: action.toGrey, onElementWithMatcher: Matcher.that(condition).toGrey)
         return self
     }
     
     @discardableResult
     public func using(_ action: Action, on otherMatcher: Matcher) -> Self {
-        var selection = self.selection
-        if let index = index {
-            selection = selection.atIndex(index)
-        }
-        selection.using(searchAction: action.toGrey, onElementWithMatcher: matcher.toGrey)
+        self.toGrey.using(searchAction: action.toGrey, onElementWithMatcher: matcher.toGrey)
         return self
     }
     
     @discardableResult
     public func perform(_ action: Action) -> Self {
-        var selection = self.selection
-        if let index = index {
-            selection = selection.atIndex(index)
-        }
-        selection.__perform(action.toGrey)
+        self.toGrey.__perform(action.toGrey)
         return self
     }
     

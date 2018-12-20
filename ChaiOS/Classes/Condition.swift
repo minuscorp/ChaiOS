@@ -142,3 +142,15 @@ public enum Condition: GreyConvertible {
         }
     }
 }
+
+extension Condition {
+    
+    public static func with(name: String, timeout: CFTimeInterval, matcher: Interaction, assertion: Matcher) -> Bool {
+        let timeoutCondition: GREYCondition = GREYCondition(name: name, block: {
+            var error: NSError?
+            matcher.toGrey.__assert(with: assertion.toGrey, error: &error)
+            return error == nil
+        })
+        return timeoutCondition.wait(withTimeout: timeout)
+    }
+}
