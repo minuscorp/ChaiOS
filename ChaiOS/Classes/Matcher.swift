@@ -35,6 +35,11 @@ extension Matcher {
 
 extension Matcher {
 
+    /**
+     Count the number of elements that matches the given `Matcher` in the current view hierarchy.
+     - Parameter condition: An condition closure to be evaluated over the matched element in the hierarchy.
+     - Returns: The number of ocurrences of the given `Matcher` using the optional condition in the current view hierarchy.
+     */
     public func occurrences(_ condition: ((Any) -> Bool)? = nil) -> Int {
         var index: Int = 0
         let countCondition: Condition = .custom(matcherBlock: { element in
