@@ -1,6 +1,7 @@
 import Foundation
 import EarlGrey
 
+// TODO: Document the class
 public final class ChaiOS {
     
     public static func with(_ matcher: Matcher) -> Interaction {
