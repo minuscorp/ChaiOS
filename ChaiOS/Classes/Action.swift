@@ -1,6 +1,11 @@
 import Foundation
 import EarlGrey
 
+/**
+ Enum for performing actions on views.
+
+ Provides a lot of action methods, such as .tap, .scrollInDirection, etc.
+*/
 public enum Action {
     case scrollInDirection(Direction, amount: CGFloat)
     case scrollToContentEdge(ContentEdge)
