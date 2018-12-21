@@ -23,25 +23,6 @@ public final class ChaiOS {
 		}
 	}
 	
-	public static func condition(with: Matcher) -> Interaction {
-		
-	}
-}
-
-/**
- Protocol for container classes of UI elements.
-
- This protocol groups UI elements and grants access to basic actions,
- such as perform() and assert()
-*/
-public protocol Screen { }
-
-extension Screen {
-	
-	public func test(_ closure: (Self) -> Void) {
-		closure(self)
-	}
-	
 	public static func with(_ matcher: Matcher) -> Interaction {
 		return Interaction(matcher: matcher)
 	}
