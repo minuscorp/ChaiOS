@@ -1,9 +1,15 @@
 import Foundation
 import EarlGrey
 
+/**
+ A matcher over acceptable conditions.
+*/
 public enum Matcher {
+	///Returns a Matcher associated to the view that satisfy the given condition.
     case that(Condition)
+	///Returns a Matcher associated to the view that satisfy any of the given conditions.
     case any([Condition])
+	///Returns a Matcher associated to the view that satisfy all the given conditions.
     case all([Condition])
 }
 
@@ -23,14 +29,18 @@ extension Matcher: GreyConvertible {
 }
 
 extension Matcher {
-    
-    public func selected(file: StaticString = #file, line: UInt = #line) -> Interaction {
-        return Interaction.init(file: file, line: line, matcher: self)
-    }
-    
-    public subscript(_ at: UInt) -> Interaction {
-        return Interaction(matcher: self, index: at)
-    }
+	
+	public func selected(file: StaticString = #file, line: UInt = #line, closure: (Interaction) -> Void) {
+		closure(Interaction.init(file: file, line: line, matcher: self))
+	}
+	
+	public func selected(file: StaticString = #file, line: UInt = #line) -> Interaction {
+		return Interaction.init(file: file, line: line, matcher: self)
+	}
+	
+	public subscript(_ at: UInt) -> Interaction {
+		return Interaction(matcher: self, index: at)
+	}
 }
 
 extension Matcher {
